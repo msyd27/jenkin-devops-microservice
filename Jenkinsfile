@@ -3,10 +3,12 @@
 //DECLARATIVE
 
 pipeline{
-	agent any
+	//agent any
+	agent { docker {image 'maven:3.6.3'}}
 	stages {
 		stage('Build') {
 			steps{
+				sh 'mvn --version'
 				echo "Build"
 			}
 		}
@@ -19,6 +21,17 @@ pipeline{
 			steps{
 				echo "Integration Test"
 			}
+		}
+	} 
+	post {
+		always{
+			echo 'Im awesome. I run always'
+		}
+		success{
+			echo 'I run when you am successful'
+		}
+		failure{
+			echo 'I run when you fail'
 		}
 	}
 }
