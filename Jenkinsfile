@@ -40,6 +40,7 @@ pipeline{
 				sh "mvn failsafe:integration-test failsafe:verify"
 			}
 		}
+		
 	} 
 	post {
 		always{
