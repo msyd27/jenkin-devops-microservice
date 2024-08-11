@@ -3,14 +3,15 @@
 //DECLARATIVE
 
 pipeline{
-	//agent any
-	agent { docker {image 'maven:3.9.8'}}
-	//gent { docker {image 'node:22.6'}}
+	agent any
+	//agent { docker {image 'maven:3.9.8'}}
+	//agent { docker {image 'node:22.6'}}
 	environment{
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
+	
 	stages {
 		stage('Checkout') {
 			steps{
